@@ -1,11 +1,19 @@
 set -e
 
-ascii_art='________                  __        ___.
-\_____  \   _____ _____  |  | ____ _\_ |__
- /   |   \ /     \\__   \ |  |/ /  |  \ __ \
-/    |    \  Y Y  \/ __ \|    <|  |  / \_\ \
-\_______  /__|_|  (____  /__|_ \____/|___  /
-        \/      \/     \/     \/         \/
+ascii_art='
+: "
++----------------------------------------------------+
+| __  __    _    ____   ____ ___ ___                 |
+||  \/  |  / \  |  _ \ / ___|_ _/ _ \                |
+|| |\/| | / _ \ | |_) | |    | | | | |               |
+|| |  | |/ ___ \|  _ <| |___ | | |_| |               |
+||_|__|_/_/_  \_\_| \_\\____|___\___/  _ _____ ____  |
+||  _ \ / _ \|  _ \|  _ \|_ _/ ___| | | | ____/ ___| |
+|| |_) | | | | | | | |_) || | |  _| | | |  _| \___ \ |
+||  _ <| |_| | |_| |  _ < | | |_| | |_| | |___ ___) ||
+||_| \_\\___/|____/|_| \_\___\____|\___/|_____|____/ |
++----------------------------------------------------+
+"
 '
 
 echo -e "$ascii_art"
@@ -17,12 +25,7 @@ sudo apt-get install -y git >/dev/null
 
 echo "Cloning Omakub..."
 rm -rf ~/.local/share/omakub
-git clone https://github.com/basecamp/omakub.git ~/.local/share/omakub >/dev/null
-if [[ $OMAKUB_REF != "master" ]]; then
-	cd ~/.local/share/omakub
-	git fetch origin "${OMAKUB_REF:-stable}" && git checkout "${OMAKUB_REF:-stable}"
-	cd -
-fi
+git clone https://github.com/marciordj/omakub.git ~/.local/share/omakub >/dev/null
 
 echo "Installation starting..."
 source ~/.local/share/omakub/install.sh
